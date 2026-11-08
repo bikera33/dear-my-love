@@ -1,0 +1,591 @@
+<!doctype html>
+<html lang="pl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#10090d" />
+    <title>TYLKO MY ❤️</title>
+    <style>
+      :root {
+        --bg: #10090d;
+        --panel: #1a1016;
+        --red: #a8324b;
+        --rose: #e7a2b0;
+        --cream: #f5e9e9;
+        --muted: #bdaab0;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        margin: 0;
+        background: radial-gradient(
+          ellipse at 50% 0%,
+          #35131f 0%,
+          var(--bg) 48%
+        );
+        color: var(--cream);
+        font-family: 'Cormorant Garamond', serif;
+        line-height: 1.75;
+      }
+      button,
+      input {
+        font: inherit;
+      }
+      .hero {
+        min-height: 100svh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        padding: 48px 22px;
+        position: relative;
+        overflow: hidden;
+      }
+      .hero:before,
+      .hero:after {
+        content: "";
+        position: absolute;
+        width: 280px;
+        height: 280px;
+        border: 1px solid #a8324b33;
+        border-radius: 50%;
+        animation: float 9s ease-in-out infinite;
+      }
+      .hero:after {
+        width: 430px;
+        height: 430px;
+        animation-delay: -4s;
+      }
+      @keyframes float {
+        50% {
+          transform: scale(1.08);
+          opacity: 0.35;
+        }
+      }
+      .hero-inner {
+        position: relative;
+        z-index: 1;
+        max-width: 700px;
+      }
+      .eyebrow {
+        font:
+          11px/1.5 Arial,
+          sans-serif;
+        letter-spacing: 0.34em;
+        text-transform: uppercase;
+        color: var(--rose);
+      }
+      h1 {
+        font-size: clamp(3.8rem, 13vw, 8rem);
+        font-weight: 400;
+        letter-spacing: 0.06em;
+        line-height: 1;
+        margin: 24px 0 18px;
+        text-shadow: 0 0 35px #a8324b55;
+      }
+      .subtitle {
+        font-size: clamp(1rem, 3vw, 1.3rem);
+        font-style: italic;
+        color: #e8cbd2;
+      }
+      .smallline {
+        margin-top: 55px;
+        color: var(--muted);
+        font:
+          10px Arial,
+          sans-serif;
+        letter-spacing: 0.25em;
+        text-transform: uppercase;
+      }
+      .scroll {
+        display: inline-block;
+        margin-top: 35px;
+        color: var(--rose);
+        text-decoration: none;
+        font:
+          11px Arial,
+          sans-serif;
+        letter-spacing: 0.2em;
+      }
+      main {
+        width: 650px;
+        margin: auto;
+      }
+      .intro {
+        padding: 95px 0 55px;
+        text-align: center;
+      }
+      .kicker {
+        font:
+          10px Arial,
+          sans-serif;
+        letter-spacing: 0.28em;
+        text-transform: uppercase;
+        color: var(--rose);
+      }
+      .intro h2,
+      .section-title {
+        font-weight: 400;
+        font-size: clamp(1.8rem, 6vw, 2.6rem);
+        line-height: 1.25;
+      }
+      .intro p {
+        color: var(--muted);
+        font-size: 1.05rem;
+      }
+      .player {
+        margin: 28px auto 0;
+        padding: 22px;
+        border: 1px solid #8d3a503f;
+        background: #1a1016aa;
+        border-radius: 18px;
+        max-width: 560px;
+      }
+      .player label {
+        display: inline-block;
+        margin: 7px 0 14px;
+        color: var(--rose);
+        font:
+          11px Arial,
+          sans-serif;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        cursor: pointer;
+      }
+      .player input {
+        display: none;
+      }
+      .player button {
+        border: 1px solid #a9576b;
+        background: #321521;
+        color: var(--cream);
+        border-radius: 30px;
+        padding: 11px 22px;
+        cursor: pointer;
+      }
+      .player button:hover {
+        background: #4a1c2b;
+      }
+      .player-note {
+        font:
+          12px Arial,
+          sans-serif;
+        color: var(--muted);
+        margin: 12px 0 0;
+      }
+      #status {
+        font:
+          12px Arial,
+          sans-serif;
+        color: var(--rose);
+        margin-top: 10px;
+        min-height: 18px;
+      }
+      .lyrics {
+        padding: 30px 0 70px;
+      }
+      .song-section {
+        padding: 42px 24px;
+        margin: 18px 0;
+        background: linear-gradient(135deg, #1a1016dd, #140d12dd);
+        border: 1px solid #8d3a502c;
+        border-radius: 18px;
+        text-align: center;
+      }
+      .song-section h3 {
+        margin: 0 0 25px;
+        color: var(--rose);
+        font:
+          11px Arial,
+          sans-serif;
+        letter-spacing: 0.25em;
+        text-transform: uppercase;
+      }
+      .song-section p {
+        white-space: pre-line;
+        margin: 0 0 21px;
+        font-size: clamp(1rem, 3.4vw, 1.16rem);
+        color: #f1e3e6;
+      }
+      .song-section p:last-child {
+        margin-bottom: 0;
+      }
+      .chorus {
+        border-color: #a8324b66;
+        background: linear-gradient(135deg, #28121b, #170d13);
+      }
+      .outro {
+        padding-top: 55px;
+        padding-bottom: 65px;
+      }
+      .outro p {
+        font-style: italic;
+        color: #e8cbd2;
+      }
+      .final-words {
+        margin: 45px auto 0;
+        font-size: clamp(2.5rem, 10vw, 5rem);
+        letter-spacing: 0.14em;
+        color: #f3dce2;
+        opacity: 0;
+        filter: blur(7px);
+        transform: translateY(10px);
+        transition:
+          opacity 3.8s ease,
+          filter 3.8s ease,
+          transform 3.8s ease;
+      }
+      .final-words.show {
+        opacity: 1;
+        filter: blur(0);
+        transform: translateY(0);
+      }
+      .final-words.vanish {
+        opacity: 0;
+        filter: blur(9px);
+        transform: translateY(-8px);
+      }
+      .dedication {
+        padding: 85px 10px 100px;
+        text-align: center;
+      }
+      .dedication .heart {
+        color: var(--red);
+        font-size: 24px;
+      }
+      .dedication p {
+        max-width: 560px;
+        margin: 18px auto;
+        color: #e5d3d8;
+      }
+      .signature {
+        margin-top: 35px !important;
+        color: var(--rose) !important;
+        font-style: italic;
+      }
+      footer {
+        text-align: center;
+        padding: 20px;
+        color: #806b72;
+        font:
+          10px Arial,
+          sans-serif;
+        letter-spacing: 0.18em;
+      }
+      .english-detail {
+    color: #bd8794;
+    font-family: Arial, sans-serif;
+    font-size: 9px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    line-height: 2;
+    margin-top: 16px;
+    opacity: 0.8;
+    }
+      @media (max-width: 520px) {
+        .song-section {
+          padding: 34px 17px;
+        }
+        .intro {
+          padding-top: 70px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="hero">
+      <div class="hero-inner">
+        <div class="english-detail">A story written in two hearts.</div>
+        <h1>TYLKO MY</h1>
+        <div class="subtitle">Dla Ciebie. Od serca.</div>
+        <div class="english-detail">
+  For the one who feels like home.
+</div>
+        <a class="scroll" href="#nasza-historia">ODROBINA NASZEJ HISTORII ↓</a>
+      </div>
+    </header>
+
+    <main>
+      <section class="intro" id="nasza-historia">
+        <div class="kicker">zanim zaczniesz czytać</div>
+        <h2>To nie jest po prostu piosenka.</h2>
+        <p>
+          To kilka wspomnień, trochę wdzięczności i wszystkie te słowa, których
+          czasem nie umiem powiedzieć na głos.
+        </p>
+        <p>
+          Napisałam ją dla Ciebie. Bo nasza historia jest dla mnie ważna — nawet
+          w tych zupełnie zwyczajnych momentach.
+        </p>
+        <div class="english-detail">
+  Some feelings are better left in a song.
+</div>
+        <div class="player">
+          <div class="kicker">piosenka o nas</div>
+          <br />
+          <label for="audioFile">＋ Dodaj moje nagranie</label>
+          <input id="audioFile" type="file" accept="audio/*" />
+          <br /><button id="playButton" type="button">
+            ▶ Odtwórz piosenkę
+          </button>
+          <div class="english-detail">
+  Close your eyes. This one's for you.
+</div>
+          <audio id="songAudio" preload="metadata"></audio>
+          <div id="status">Nagranie możesz dodać, kiedy będzie gotowe.</div>
+          <p class="player-note">
+            Gdy dodasz plik audio, przycisk odtworzy Twoją wersję.
+          </p>
+        </div>
+      </section>
+
+      <section class="lyrics">
+        <article class="song-section">
+          <h3>Zwrotka I</h3>
+          <div class="english-detail">The beginning</div>
+          <p>
+            Nie wiem, kiedy stałeś się kimś więcej niż kolejnym dniem, bo zanim
+            znałam Twoje serce, już jakoś bliżej było mnie.
+          </p>
+          <p>
+            Wśród szkolnych korytarzy było coś, czego nie znałam, jakbyśmy byli
+            sobie bliscy, zanim zdążyłam Cię pokochać.
+          </p>
+          <p>
+            Ty już znałeś odpowiedź, gdy ja szukałam pytań, Ty widziałeś w nas
+            coś więcej, zanim ja odważyłam się nazwać nas.
+          </p>
+        </article>
+
+        <article class="song-section">
+          <h3>Pre-refren</h3>
+          <div class="english-detail">That rainy day</div>
+          <p>
+            A potem przyszedł tamten deszcz, pierwszy raz tylko Ty i ja. I nie
+            wiem, czy to była pogoda, czy początek całego świata.
+          </p>
+        </article>
+
+        <article class="song-section chorus">
+          <h3>Refren</h3>
+          <div class="english-detail">Everything I feel</div>
+          <p>
+            Bo jestem dumna z Ciebie, z każdego małego kroku. I chcę być obok
+            Ciebie, gdy świat nabiera kolorów. A kiedy spadnie Ci niebo, ja będę
+            trzymać je z Tobą. Nie musisz nieść go sam, przecież jesteśmy po to.
+          </p>
+          <p>
+            I dziękuję Ci za nas, za to, że jesteś tak blisko. Za każdy zwykły
+            dzień, który przy Tobie znaczy wszystko.
+          </p>
+        </article>
+
+        <article class="song-section">
+          <div class="english-detail">Little moments, big feelings</div>
+          <h3>Zwrotka II</h3>
+          <p>
+            Pamiętam pierwsze „kocham”, choć przyszło trochę przez ekran. Jedno
+            małe „I love you”, a zmieniło cały świat.
+          </p>
+          <p>
+            Potem pytanie bez odwagi, czy naprawdę chcesz być mój. A Ty byłeś
+            taki szczęśliwy, jakbyś czekał na ten moment już.
+          </p>
+          <p>
+            Dajesz mi być sobą, nawet kiedy jestem dziwna. Mogę śmiać się za
+            głośno, a Ty i tak mówisz, że jestem piękna.
+          </p>
+          <p>
+            Mówisz, że jestem Twoim złotem, więc chowam te słowa gdzieś pod
+            skórą. Bo pierwszy raz ktoś patrzy na mnie tak, jakbym naprawdę była
+            cudem.
+          </p>
+        </article>
+
+        <article class="song-section chorus">
+          <h3>Refren</h3>
+          <div class="english-detail">Always by your side</div>
+          <p>
+            Bo jestem dumna z Ciebie, z każdego małego kroku. I chcę być obok
+            Ciebie, gdy świat nabiera kolorów. A kiedy spadnie Ci niebo, ja będę
+            trzymać je z Tobą. Nie musisz nieść go sam, przecież jesteśmy po to.
+          </p>
+          <p>
+            I dziękuję Ci za nas, za to, że jesteś tak blisko. Za każdy zwykły
+            dzień, który przy Tobie znaczy wszystko.
+          </p>
+        </article>
+
+        <article class="song-section">
+          <h3>Bridge</h3>
+          <div class="english-detail">No matter what</div>
+          <p>
+            A jeśli kiedyś zwątpisz w siebie, pozwól, że przypomnę Ci: ile już
+            przeszedłeś, ile jeszcze możesz zdobyć.
+          </p>
+          <p>
+            A jeśli ja zapomnę, że też potrafię więcej — przypomnij mi, kim
+            jestem, tak jak robisz to najczęściej.
+          </p>
+          <p>
+            Bo nawet jeśli upadniesz i zabraknie Ci sił, nie będę mówić „wstań”.
+            Położę się obok i zostanę, tyle, ile będziesz potrzebować.
+          </p>
+        </article>
+
+        <article class="song-section chorus">
+          <h3>Ostatni refren</h3>
+          <div class="english-detail">Everything that's yet to come</div>
+          <p>
+            Bo jestem dumna z Ciebie, bardziej, niż umiem powiedzieć. I chcę być
+            obok Ciebie, w tym wszystkim, co jeszcze przed nami.
+          </p>
+          <p>
+            Nie obiecuję, że zawsze będzie nam łatwo i pięknie. Obiecuję tylko
+            jedno — nie będziesz szedł przez to sam.
+          </p>
+          <p>
+            I nawet kiedy świat Cię zmęczy, będę przypominać Ci, że dasz radę.
+          </p>
+          <p>
+            I dziękuję Ci za nas, za każdą chwilę i bliskość. Bo odkąd jesteś
+            Ty, zwyczajne życie znaczy wszystko.
+          </p>
+        </article>
+
+        <article class="song-section outro" id="outro">
+          <h3>Outro · coraz ciszej</h3>
+          <div class="english-detail">
+  Maybe it was always us.
+</div><br>
+          <p>A jeśli kiedyś zapytasz, kiedy zaczęło się „my” — nie wiem.</p>
+          <p>Może tamtego dnia, gdy padał deszcz.</p>
+          <p>
+            A może dużo wcześniej, kiedy jeszcze nie wiedzieliśmy, że już
+            jesteśmy
+          </p>
+          <div class="final-words" id="finalWords">TYLKO MY</div>
+        </article>
+      </section>
+
+      <section class="dedication">
+        <div class="heart">♥</div>
+        <div class="kicker">i jeszcze jedno</div>
+        <p>Wszystkiego najlepszego, Maksiu.</p>
+        <p>
+          Jestem z Ciebie dumna. Dziękuję, że jesteś, że mogę być przy Tobie
+          sobą i że razem tworzymy coś, co jest tylko nasze.
+        </p>
+        <p>
+          Nie wiem, co dokładnie przyniesie przyszłość, ale cieszę się, że mogę
+          odkrywać ją właśnie z Tobą.
+        </p>
+        <p class="signature">Kocham Cię. ❤️</p>
+      </section>
+    </main>
+    <footer>
+      <div class="english-detail">
+        MADE WITH LOVE, JUST FOR YOU ❤️
+      </div><br />
+      NAPISANE DLA MAXA · TYLKO MY
+      <div class="english-detail">
+  In every lifetime, in every version of the story.
+</div>
+    </footer>
+
+    <script>
+      const audio = document.getElementById("songAudio");
+      const fileInput = document.getElementById("audioFile");
+      const playButton = document.getElementById("playButton");
+      const statusText = document.getElementById("status");
+      const finalWords = document.getElementById("finalWords");
+      let objectUrl = null;
+      let fadeFrame = null;
+      let wordsShown = false;
+
+      fileInput.addEventListener("change", () => {
+        const file = fileInput.files && fileInput.files[0];
+        if (!file) return;
+        if (objectUrl) URL.revokeObjectURL(objectUrl);
+        objectUrl = URL.createObjectURL(file);
+        audio.src = objectUrl;
+        statusText.textContent = "Nagranie gotowe. Możesz już odsłuchać.";
+        playButton.textContent = "▶ Odtwórz piosenkę";
+        finalWords.classList.remove("show", "vanish");
+        wordsShown = false;
+      });
+
+      playButton.addEventListener("click", async () => {
+        if (!audio.src) {
+          statusText.textContent = "Najpierw dodaj swoje nagranie powyżej. ❤️";
+          fileInput.click();
+          return;
+        }
+        if (audio.paused) {
+          try {
+            await audio.play();
+            playButton.textContent = "Ⅱ Pauza";
+            statusText.textContent = "Teraz posłuchajcie Waszej historii.";
+          } catch (e) {
+            statusText.textContent =
+              "Nie udało się odtworzyć pliku. Spróbuj dodać go ponownie.";
+          }
+        } else {
+          audio.pause();
+          playButton.textContent = "▶ Wznów";
+        }
+      });
+
+      function fadeAndOutro() {
+        if (!Number.isFinite(audio.duration) || audio.duration <= 0) return;
+        const remaining = audio.duration - audio.currentTime;
+        // Muzyka zaczyna łagodnie cichnąć w ostatnich 12 sekundach.
+        if (remaining <= 12)
+          audio.volume = Math.max(0, Math.min(1, remaining / 12));
+        else audio.volume = 1;
+
+        // Ostatnie słowa pojawiają się przy końcówce i powoli znikają.
+        if (remaining <= 5 && !wordsShown) {
+          finalWords.classList.add("show");
+          wordsShown = true;
+        }
+        if (remaining <= 2.5) finalWords.classList.add("vanish");
+        if (!audio.paused && !audio.ended)
+          fadeFrame = requestAnimationFrame(fadeAndOutro);
+      }
+      audio.addEventListener("play", () => {
+        cancelAnimationFrame(fadeFrame);
+        fadeFrame = requestAnimationFrame(fadeAndOutro);
+      });
+      audio.addEventListener("pause", () => cancelAnimationFrame(fadeFrame));
+      audio.addEventListener("ended", () => {
+        cancelAnimationFrame(fadeFrame);
+        audio.volume = 1;
+        playButton.textContent = "▶ Odtwórz ponownie";
+        finalWords.classList.add("show", "vanish");
+        statusText.textContent = "Koniec piosenki. Ale nie Waszej historii.";
+      });
+      audio.addEventListener("loadedmetadata", () => {
+        audio.volume = 1;
+      });
+
+      // Jeśli strona jest oglądana przed dodaniem nagrania, finał też ma swoją animację.
+      const outro = document.getElementById("outro");
+      const outroObserver = new IntersectionObserver(
+        (entries) => {
+          if (!audio.src && entries.some((entry) => entry.isIntersecting)) {
+            finalWords.classList.add("show");
+            setTimeout(() => finalWords.classList.add("vanish"), 4500);
+            outroObserver.disconnect();
+          }
+        },
+        { threshold: 0.55 },
+      );
+      outroObserver.observe(outro);
+    </script>
+  </body>
+</html>
